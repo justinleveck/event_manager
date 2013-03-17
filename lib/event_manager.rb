@@ -7,6 +7,14 @@ def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5,"0")[0..4]
 end
 
+def legislators_for_zipcode(zipcode)
+  legislators = Sunlight::Legislator.all_in_zipcode(zipcode)
+
+  legislator_names = legislators.collect do |legislator|
+    "#{legislator.firstname} #{legislator.lastname}"
+  end
+end
+
 puts "EventManager initialized."
 
 contents = CSV.open '../event_attendees.csv', headers: true, header_converters: :symbol
@@ -15,12 +23,6 @@ contents.each do |row|
   name = row[:first_name]
 
   zipcode = clean_zipcode(row[:zipcode])
-
-  legislators = Sunlight::Legislator.all_in_zipcode(zipcode)
-
-  legislator_names = legislators.collect do |legislator|
-    "#{legislator.firstname} #{legislator.lastname}"
-  end
 
   legislators_string = legislator_names.join(", ")
 
