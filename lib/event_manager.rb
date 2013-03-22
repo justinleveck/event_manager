@@ -4,12 +4,6 @@ require 'erb'
 
 Sunlight::Base.api_key = "e179a6973728c4dd3fb1204283aaccb5"
 
-# If the phone number is less than 10 digits assume that it is bad number
-# If the phone number is 10 digits assume that it is good
-# If the phone number is 11 digits and the first number is 1, trim the 1 and use the first 10 digits
-# If the phone number is 11 digits and the first number is not 1, then it is a bad number
-# If the phone number is more than 11 digits assume that it is a bad number
-
 def bad_phone_number?(phone_number)
   if phone_number.length <  10
     return true
@@ -65,5 +59,5 @@ contents.each do |row|
 
   puts "#{id.to_i} , #{row[:homephone]}, #{phone_number}"
  
-  #save_thank_you_letters(id,form_letter)
+  save_thank_you_letters(id,form_letter)
 end
