@@ -2,7 +2,6 @@ EventManager Tutorial by JumpStart Labs http://tutorials.jumpstartlab.com/projec
 
 The techniques practiced:
 
-
 -File input and output <br />
 -Reading data from CSV files <br />
 -String manipulation <br />
